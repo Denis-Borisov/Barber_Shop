@@ -5,9 +5,10 @@ require 'sinatra/reloader'
 require 'sqlite3'
 
 
+
 configure do
-	@db = SQLite3::Database.new 'barbershop.db'
-	@db.execute 'CREATE TABLE IF NOT EXISTS
+	db = get_db
+	db.execute 'CREATE TABLE IF NOT EXISTS
 	"Users"
 	(
 		"id" INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -18,6 +19,11 @@ configure do
 		"color" TEXT
 	)'
 end
+
+def get_db
+	return SQLite3::Database.new 'barbershop.db'	
+end
+
 
 
 get '/' do
@@ -79,21 +85,33 @@ post "/visit" do
 	end	
 
 
+	db = get_db
+	db.execute 'insert into
+	Users
+	(
+		imy,
+		telefon,
+		vremy,
+		barb,
+		color
+	)
+	values
+	(?, ?, ?, ?, ?)', [@imy, @telefon, @vremy, @barb, @color]
+
+
+
+
 	@title = "Спасибо!"
 	@message = "Дорогой #{@imy}, будем вас ждать #{@vremy}, парикмахер #{@barb}, окрашивание в цвет #{@color}"
 
-	File.open "./public/Users.txt", "a" do |q| 
-		q.puts "Имя клиента: #{@imy}"  
-		q.puts "Телефон: #{@telefon}"
-		q.puts "Дата и время визита: #{@vremy}"
-		q.puts "Парикмахер: #{@barb}"
-		q.puts "Цвет окрашивания: #{@color}"
-		q.close
-	end
 
 	erb :visit
 
 end
+
+
+
+
 
 
 
@@ -121,6 +139,9 @@ post "/contacts" do
 	erb :contacts
 
 end
+
+
+
 
 post "/guests" do
 	
