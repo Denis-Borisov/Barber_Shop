@@ -21,7 +21,9 @@ configure do
 end
 
 def get_db
-	return SQLite3::Database.new 'barbershop.db'	
+	db = SQLite3::Database.new 'barbershop.db'	
+	db.results_as_hash = true
+	return db
 end
 
 
@@ -105,15 +107,9 @@ post "/visit" do
 	@message = "Дорогой #{@imy}, будем вас ждать #{@vremy}, парикмахер #{@barb}, окрашивание в цвет #{@color}"
 
 
-#	erb :visit
+	erb :visit
 
 end
-
-
-
-
-
-
 
 
 post "/contacts" do
@@ -165,4 +161,8 @@ post "/guests" do
 
 
 
+end
+
+get '/showusers' do
+  erb "Hello World"
 end
