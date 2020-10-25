@@ -105,7 +105,7 @@ post "/visit" do
 	@message = "Дорогой #{@imy}, будем вас ждать #{@vremy}, парикмахер #{@barb}, окрашивание в цвет #{@color}"
 
 
-	erb :visit
+#	erb :visit
 
 end
 
