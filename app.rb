@@ -4,7 +4,11 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
 
-
+def get_db
+	db = SQLite3::Database.new 'barbershop.db'	
+	db.results_as_hash = true
+	return db
+end
 
 configure do
 	db = get_db
@@ -20,11 +24,7 @@ configure do
 	)'
 end
 
-def get_db
-	db = SQLite3::Database.new 'barbershop.db'	
-	db.results_as_hash = true
-	return db
-end
+
 
 
 
@@ -164,5 +164,9 @@ post "/guests" do
 end
 
 get '/showusers' do
-  erb "Hello World"
+
+	erb :showusers
 end
+
+
+
