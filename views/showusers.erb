@@ -1,11 +1,24 @@
 <h2>Показ пользователей</h2>
 
 
-<table class="table">
+<table class="table table-striped">
 
-	<%= @result %>
-	  
+	<thead>
+		<tr>
+			<th>Имя</th>
+			<th>Телефон</th>
+			<th>Время</th>
+			<th>Парикмахер</th>
+			<th>Цвет</th>
+		</tr>
+	</thead>
+	
+
+
+	<body>
+
 	<% @result.each do |row|  %>
+
 		<tr>
 			<td><%= row['imy'] %></td>
 			<td><%= row['telefon'] %></td>
@@ -14,6 +27,8 @@
 			<td><%= row['color'] %></td>
 		</tr>
 	<% end %>
+
+	</body>
 
 
 
