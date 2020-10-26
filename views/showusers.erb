@@ -2,16 +2,19 @@
 
 
 <table class="table">
-  <tr>
-  	<td>aa</td>
-  	<td>bb</td>
-  </tr>
-  <tr>
-  	<td>cc</td>
-  	<td>dd</td>
-  </tr>
-  <tr>
-  	<td>qq</td>
-  	<td>ww</td>
-  </tr>
+
+	<%= @result %>
+	  
+	<% @result.each do |row|  %>
+		<tr>
+			<td><%= row['imy'] %></td>
+			<td><%= row['telefon'] %></td>
+			<td><%= row['vremy'] %></td>
+			<td><%= row['barb'] %></td>
+			<td><%= row['color'] %></td>
+		</tr>
+	<% end %>
+
+
+
 </table>
