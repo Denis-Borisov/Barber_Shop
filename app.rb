@@ -10,9 +10,9 @@ def is_barb? db, name
 	db.execute('select * from Barbers where name=?',[name]).length > 0
 end
 
-def seed_db db, barrr
+def seed_db db, aaa
 
-	barrr.each do |barber|
+	aaa.each do |barber|
 		if !is_barb? db, barber
 			db.execute 'Insert into Barbers (name) values (?)',[barber] 
 		end
