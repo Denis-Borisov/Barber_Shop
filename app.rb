@@ -38,7 +38,7 @@ configure do
 		"vremy" TEXT,
 		"barb" TEXT,
 		"color" TEXT
-	)'
+	);'
 
 
 	db.execute 'CREATE TABLE IF NOT EXISTS 
