@@ -86,11 +86,6 @@ get '/about' do
 	erb :about
 end
 
-get '/something' do
-	erb :something
-end
-
-
 get '/visit' do
 	erb :visit
 end	
@@ -134,15 +129,9 @@ post "/visit" do
 	)
 	values
 	(?, ?, ?, ?, ?)', [@imy, @telefon, @vremy, @barb, @color]
+	
 
-
-
-
-	@title = "Спасибо!"
-	@message = "Дорогой #{@imy}, будем вас ждать #{@vremy}, парикмахер #{@barb}, окрашивание в цвет #{@color}"
-
-
-	erb :visit
+	erb "<h2>Спасибо, вы записались!</h2>"
 
 end
 
