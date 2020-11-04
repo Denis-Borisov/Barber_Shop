@@ -27,6 +27,12 @@ def get_db
 	return db
 end
 
+
+before do 
+	db = get_db
+	@barbers = db.execute 'select * from Barbers'
+end
+
 configure do
 	db = get_db
 	db.execute 'CREATE TABLE IF NOT EXISTS
@@ -120,11 +126,11 @@ post "/visit" do
 	db.execute 'insert into
 	Users
 	(
-		imy,
-		telefon,
-		vremy,
-		barb,
-		color
+		 imy,
+		 telefon,
+		 vremy,
+		 barb,
+		 color
 	)
 	values
 	(?, ?, ?, ?, ?)', [@imy, @telefon, @vremy, @barb, @color]
